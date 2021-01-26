@@ -35,7 +35,7 @@ const KnownSites: KnownSitesType = {
       cacheControl: defaultCacheControl,
     },
     preview: {
-      baseUri: "biblemungerjs-wip.mrled.vercel.app",
+      baseUri: "https://biblemungerjs-wip.mrled.vercel.app",
       scaleFactor: 1.5,
       cacheControl: defaultCacheControl,
     },
