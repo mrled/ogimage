@@ -1,13 +1,14 @@
 /* Sites we know about
  */
 
-type SiteType = {
-  baseUri: string;
-  scaleFactor: number;
-  cacheControl: string;
-};
 type KnownSitesType = {
-  [key: string]: SiteType;
+  [key: string]: {
+    [key: string]: {
+      baseUri: string;
+      scaleFactor: number;
+      cacheControl: string;
+    };
+  };
 };
 
 // All values in seconds
@@ -21,19 +22,28 @@ const defaultCacheControl = `s-maxage=${cacheDuration.oneWeek}, immutable, publi
 
 const KnownSites: KnownSitesType = {
   cistercian: {
-    baseUri: "https://cistercian.micahrl.com",
-    scaleFactor: 3,
-    cacheControl: defaultCacheControl,
-  },
-  "biblemunger-local": {
-    baseUri: "http://localhost:3000",
-    scaleFactor: 1.5,
-    cacheControl: defaultCacheControl,
+    production: {
+      baseUri: "https://cistercian.micahrl.com",
+      scaleFactor: 3,
+      cacheControl: defaultCacheControl,
+    },
   },
   biblemunger: {
-    baseUri: "https://biblemunger.micahrl.com",
-    scaleFactor: 1.5,
-    cacheControl: defaultCacheControl,
+    production: {
+      baseUri: "https://biblemunger.micahrl.com",
+      scaleFactor: 1.5,
+      cacheControl: defaultCacheControl,
+    },
+    preview: {
+      baseUri: "biblemungerjs-wip.mrled.vercel.app",
+      scaleFactor: 1.5,
+      cacheControl: defaultCacheControl,
+    },
+    local: {
+      baseUri: "http://localhost:3000",
+      scaleFactor: 1.5,
+      cacheControl: defaultCacheControl,
+    },
   },
 };
 

@@ -10,6 +10,7 @@ export default async function handler(
   console.log(`Loading handler at ${JSON.stringify(req.query)}`);
 
   const siteName = req.query.site as string;
+  const environment = req.query.site as string;
   const urlPath = (req.query.urlPath as string[]).join("/");
 
   // Only allow known sites to use this app
@@ -19,7 +20,7 @@ export default async function handler(
     return;
   }
 
-  const site = KnownSites[siteName];
+  const site = KnownSites[siteName][environment];
   const uri = `${site.baseUri}/${urlPath}`;
 
   // Good defaults for og:image ?
