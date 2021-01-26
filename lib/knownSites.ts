@@ -25,9 +25,14 @@ const KnownSites: KnownSitesType = {
     scaleFactor: 3,
     cacheControl: defaultCacheControl,
   },
+  "biblemunger-local": {
+    baseUri: "http://localhost:3000",
+    scaleFactor: 1.5,
+    cacheControl: defaultCacheControl,
+  },
   biblemunger: {
     baseUri: "https://biblemunger.micahrl.com",
-    scaleFactor: 1,
+    scaleFactor: 1.5,
     cacheControl: defaultCacheControl,
   },
 };
