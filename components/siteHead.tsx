@@ -6,6 +6,7 @@ export default function SiteHead() {
   const ogUrl = "https://ogimage.micahrl.com";
   const ogImage =
     "https://ogimage.micahrl.com/api/ogImage/og/production/preview/logo";
+  const twAccount = "@mrled";
 
   return (
     <Head>
@@ -37,6 +38,12 @@ export default function SiteHead() {
       />
       <meta property="og:url" content={ogUrl} />
       <meta property="og:image" content={ogImage} />
+
+      <meta name="twitter:site" content={twAccount} />
+      <meta name="twitter:creator" content={twAccount} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:card" content="summary_large_image" />
     </Head>
   );
 }
