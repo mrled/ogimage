@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <SiteHead />
-      <main className="py-8 px-12 md:px-20 max-w-3xl">
+      <main className="py-8 px-12 md:px-20 max-w-3xl text-sm md:text-base">
         <h1 className="text-4xl my-8">
           <OgImage />
         </h1>

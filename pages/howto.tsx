@@ -22,12 +22,14 @@ const KnownSites: KnownSitesType = {
 }
 `;
 
+const exampleOgImageBaseUri = "https://ogimageexample.youraccount.vercel.app";
+
 export default function Home() {
   const liClasses = "my-5";
   return (
     <>
       <SiteHead />
-      <main className="py-8 px-12 md:px-20 max-w-3xl">
+      <main className="py-8 px-12 md:px-20 md:max-w-3xl text-sm md:text-base">
         <h1 className="text-2xl my-8">
           How do I use{" "}
           <InternalLink href="/">
@@ -70,18 +72,19 @@ export default function Home() {
             <li className={liClasses}>
               Deploy your <OgImage /> fork to Vercel. Make note of the URL that
               it is deployed to, e.g.{" "}
-              <InlineCode>https://your-ogimage-example.vercel.app</InlineCode>.
-              You can also deploy to a custom domain.
+              <InlineCode>{exampleOgImageBaseUri}</InlineCode>. You can also
+              deploy to a custom domain.
             </li>
             <li className={liClasses}>
               On the app you want to generate <InlineCode>og:image</InlineCode>{" "}
               preview for, set its <InlineCode>og:image</InlineCode> to
               something like this:{" "}
               <InlineCode>
-                https://your-ogimage-example.vercel.app/api/ogImage/exampleSite/production/path/to/your/preview/endpoint
+                {exampleOgImageBaseUri}
+                /api/ogImage/exampleSite/production/path/to/your/preview/endpoint
               </InlineCode>
               <OgImageUrlTable
-                ogImageUri="https://your-ogimage-example.vercel.app"
+                ogImageUri={exampleOgImageBaseUri}
                 siteName="exampleSite"
                 environment="production"
                 urlSubPath="path/to/your/preview/endpoint"

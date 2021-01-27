@@ -10,7 +10,7 @@ export function InlineCode({ children }: CodePropsType) {
 export function CodeBlock({ children }: CodePropsType) {
   return (
     <pre
-      className={`font-mono ${codeFontColor} whitespace-pre overflow-visible `}
+      className={`font-mono ${codeFontColor} whitespace-pre overflow-scroll`}
     >
       <code className="">{children}</code>
     </pre>
