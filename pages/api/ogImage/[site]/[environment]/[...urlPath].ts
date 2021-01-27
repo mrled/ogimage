@@ -20,7 +20,18 @@ export default async function handler(
     return;
   }
 
-  const site = KnownSites[siteName][envName];
+  const allEnvs = KnownSites[siteName];
+  if (!allEnvs) {
+    res.statusCode = 404;
+    res.json({ error: `No such site ${siteName}` });
+    return;
+  }
+  const site = allEnvs[envName];
+  if (!site) {
+    res.statusCode = 404;
+    res.json({ error: `No such environment ${envName} for site ${siteName}` });
+    return;
+  }
   const uri = `${site.baseUri}/${urlPath}`;
 
   // Good defaults for og:image ?
