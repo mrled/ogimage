@@ -2,7 +2,7 @@ import Head from "next/head";
 
 export default function SiteHead() {
   const title = "O.G. image";
-  const description = "Imag(in)e an O.G.";
+  const description = "Generate og:image social previews from React components";
   const ogUrl = "https://ogimage.micahrl.com";
   const ogImage =
     "https://ogimage.micahrl.com/api/ogImage/og/production/preview/logo";

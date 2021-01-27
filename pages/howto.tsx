@@ -2,15 +2,32 @@ import React from "react";
 import { OgImage } from "components/logo";
 import SiteHead from "components/siteHead";
 import { ExternalLink, InternalLink } from "components/blueLinks";
-import { InlineCode } from "components/code";
+import { CodeBlock, InlineCode } from "components/code";
 import { OgImageUrlTable } from "components/ogImageUrlTable";
+
+const exampleKnownHostsObj = `
+const KnownSites: KnownSitesType = {
+  exampleSite: {
+    production: {
+      baseUri: "https://www.example.com",
+      scaleFactor: 3,
+      cacheControl: defaultCacheControl,
+    },
+    staging: {
+      baseUri: "https://staging.example.com",
+      scaleFactor: 3,
+      cacheControl: defaultCacheControl,
+    },
+  },
+}
+`;
 
 export default function Home() {
   const liClasses = "my-5";
   return (
     <>
       <SiteHead />
-      <main className="my-8 mx-12 md:mx-20">
+      <main className="py-8 px-12 md:px-20 max-w-3xl">
         <h1 className="text-2xl my-8">
           How do I use{" "}
           <InternalLink href="/">
@@ -46,41 +63,44 @@ export default function Home() {
               <ExternalLink href="https://vercel.com/docs/edge-network/headers#cache-control-header">
                 the Vercel documentation on the Cache-Control header
               </ExternalLink>{" "}
-              to set the value of cacheControl.
+              to set the value of cacheControl. Here's an example{" "}
+              <InlineCode>KnownSites</InlineCode> object:
+              <CodeBlock>{exampleKnownHostsObj}</CodeBlock>
             </li>
             <li className={liClasses}>
               Deploy your <OgImage /> fork to Vercel. Make note of the URL that
               it is deployed to, e.g.{" "}
-              <InlineCode>https://ogimage-example.vercel.app</InlineCode>. You
-              can also deploy to a custom domain.
+              <InlineCode>https://your-ogimage-example.vercel.app</InlineCode>.
+              You can also deploy to a custom domain.
             </li>
             <li className={liClasses}>
               On the app you want to generate <InlineCode>og:image</InlineCode>{" "}
-              preview for, set its <InlineCode>og:image</InlineCode> to your{" "}
-              <OgImage /> deployment URI +{" "}
-              <InlineCode>/api/ogImage/</InlineCode> + the name of your site in{" "}
-              <InlineCode>KnownSites</InlineCode> + the name of your environment
-              in <InlineCode>KnownSites</InlineCode> + the path to your app's
-              preview URL.
+              preview for, set its <InlineCode>og:image</InlineCode> to
+              something like this:{" "}
+              <InlineCode>
+                https://your-ogimage-example.vercel.app/api/ogImage/exampleSite/production/path/to/your/preview/endpoint
+              </InlineCode>
+              <OgImageUrlTable
+                ogImageUri="https://your-ogimage-example.vercel.app"
+                siteName="exampleSite"
+                environment="production"
+                urlSubPath="path/to/your/preview/endpoint"
+              />
             </li>
+
             <li className={liClasses}>
               For example, as mentioned above, <OgImage /> itself has a page for
               its own preview at{" "}
               <InternalLink href="/preview/logo">
                 <InlineCode>/preview/logo</InlineCode>
               </InternalLink>
-              . It also knows about itself in{" "}
-              <InlineCode>KnownSites</InlineCode>, with a site name of{" "}
-              <InlineCode>og</InlineCode> and an environment called{" "}
-              <InlineCode>production</InlineCode>. Thus, it can generate an{" "}
-              <InlineCode>og:image</InlineCode> for itself by going to{" "}
-              <ExternalLink href="https://ogimage.micahrl.com/api/ogImage/og/preview/logo">
-                https://ogimage.micahrl.com/api/ogImage/og/preview/logo
-              </ExternalLink>
-              . Note that the first link is a regular React component with
-              selectable text, while the second link is an image with{" "}
-              <InlineCode>Content-Type: image/png</InlineCode>. Here's a table
-              of that second link so you can see how it breaks down:
+              . That link is a page containing a regular React component. It
+              also knows about itself in <InlineCode>KnownSites</InlineCode>,
+              with a site name of <InlineCode>og</InlineCode> and an environment
+              called <InlineCode>production</InlineCode>. Thus, it can generate
+              an <InlineCode>og:image</InlineCode> for itself by going to{" "}
+              <ExternalLink href="https://ogimage.micahrl.com/api/ogImage/og/production/preview/logo" />
+              .
               <OgImageUrlTable
                 ogImageUri="https://ogimage.micahrl.com"
                 siteName="og"
@@ -108,9 +128,7 @@ export default function Home() {
               </ExternalLink>
               . Since biblemunger is known to <OgImage />, it can set an{" "}
               <InlineCode>og:image</InlineCode> tag to{" "}
-              <ExternalLink href="https://ogimage.micahrl.com/api/ogImage/biblemunger/production/preview/munge/wine/whiteclaws/49-5-18">
-                https://ogimage.micahrl.com/api/ogImage/biblemunger/production/preview/munge/wine/whiteclaws/49-5-18
-              </ExternalLink>
+              <ExternalLink href="https://ogimage.micahrl.com/api/ogImage/biblemunger/production/preview/munge/wine/whiteclaws/49-5-18" />
               , which looks like this in tabular form:
               <OgImageUrlTable
                 ogImageUri="https://ogimage.micahrl.com"
@@ -120,6 +138,41 @@ export default function Home() {
               />{" "}
             </li>
           </ol>
+
+          <h2 className="text-2xl my-8">Beware</h2>
+          <p className="my-4">
+            Do note that Vercel{" "}
+            <ExternalLink href="https://twitter.com/vercel_support/status/1354414827939106821?s=20">
+              doesn't recommend using <InlineCode>puppeteer</InlineCode>
+            </ExternalLink>{" "}
+            on its serverless Functions platform, and <OgImage /> uses{" "}
+            <InlineCode>puppeteer</InlineCode> to start a Chromium process to
+            take the screenshot.
+          </p>
+          <p className="my-4">
+            (That said, they do have{" "}
+            <ExternalLink href="https://github.com/vercel/og-image/">
+              an example
+            </ExternalLink>{" "}
+            that uses <InlineCode>puppeteer</InlineCode> to generate{" "}
+            <InlineCode>og:image</InlineCode> previews from text.)
+          </p>
+          <p className="my-4">
+            One reason for this is that AWS Lambda functions, on which Vercel
+            Functions are built, have a 50MB maximum code size. If{" "}
+            <InlineCode>puppeteer</InlineCode> +{" "}
+            <ExternalLink href="https://www.npmjs.com/package/chrome-aws-lambda">
+              chrome-aws-lambda
+            </ExternalLink>{" "}
+            + my <OgImage /> code exceed that maximum, deploying to Vercel will
+            fail with an error like{" "}
+            <InlineCode>
+              Error: Required lambda files exceed max lambda size of 50000000
+              bytes
+            </InlineCode>
+            . If this happens to you, Vercel will likely just tell you not to do
+            this.
+          </p>
         </p>
       </main>
     </>
