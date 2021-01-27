@@ -29,6 +29,11 @@ const KnownSites: KnownSitesType = {
     },
   },
   og: {
+    production: {
+      baseUri: "https://ogimage.micahrl.com",
+      scaleFactor: 2,
+      cacheControl: defaultCacheControl,
+    },
     local: {
       baseUri: "http://localhost:2929",
       scaleFactor: 2,
