@@ -72,17 +72,21 @@ export default function Home() {
             <li className={liClasses}>
               Deploy your <OgImage /> fork to Vercel. Make note of the URL that
               it is deployed to, e.g.{" "}
-              <InlineCode>{exampleOgImageBaseUri}</InlineCode>. You can also
-              deploy to a custom domain.
+              <span className="break-all">
+                <InlineCode>{exampleOgImageBaseUri}</InlineCode>
+              </span>
+              . You can also deploy to a custom domain.
             </li>
             <li className={liClasses}>
               On the app you want to generate <InlineCode>og:image</InlineCode>{" "}
               preview for, set its <InlineCode>og:image</InlineCode> to
               something like this:{" "}
-              <InlineCode>
-                {exampleOgImageBaseUri}
-                /api/ogImage/exampleSite/production/path/to/your/preview/endpoint
-              </InlineCode>
+              <span className="break-all">
+                <InlineCode>
+                  {exampleOgImageBaseUri}
+                  /api/ogImage/exampleSite/production/path/to/your/preview/endpoint
+                </InlineCode>
+              </span>
               <OgImageUrlTable
                 ogImageUri={exampleOgImageBaseUri}
                 siteName="exampleSite"
@@ -102,7 +106,9 @@ export default function Home() {
               with a site name of <InlineCode>og</InlineCode> and an environment
               called <InlineCode>production</InlineCode>. Thus, it can generate
               an <InlineCode>og:image</InlineCode> for itself by going to{" "}
-              <ExternalLink href="https://ogimage.micahrl.com/api/ogImage/og/production/preview/logo" />
+              <span className="break-all">
+                <ExternalLink href="https://ogimage.micahrl.com/api/ogImage/og/production/preview/logo" />
+              </span>
               .
               <OgImageUrlTable
                 ogImageUri="https://ogimage.micahrl.com"
@@ -131,7 +137,9 @@ export default function Home() {
               </ExternalLink>
               . Since biblemunger is known to <OgImage />, it can set an{" "}
               <InlineCode>og:image</InlineCode> tag to{" "}
-              <ExternalLink href="https://ogimage.micahrl.com/api/ogImage/biblemunger/production/preview/munge/wine/whiteclaws/49-5-18" />
+              <span className="break-all">
+                <ExternalLink href="https://ogimage.micahrl.com/api/ogImage/biblemunger/production/preview/munge/wine/whiteclaws/49-5-18" />
+              </span>
               , which looks like this in tabular form:
               <OgImageUrlTable
                 ogImageUri="https://ogimage.micahrl.com"

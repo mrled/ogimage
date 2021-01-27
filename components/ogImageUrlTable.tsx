@@ -18,8 +18,8 @@ export function OgImageUrlTable({
   const rowClasses = "";
   const cellClasses = "border m-2 p-2";
   return (
-    <div className="overflow-scroll lg:overflow-visible">
-      <table className="p-4">
+    <div className="overflow-scroll lg:overflow-visible ">
+      <table className="p-4 border-2 border-yellow-600">
         <tr className={rowClasses}>
           <th className={cellClasses}>
             <OgImage /> URI
