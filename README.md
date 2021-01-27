@@ -1,6 +1,6 @@
 # O.G. IMAGE
 
-![](https://ogimage.micahrl.com/api/ogImage/og/preview/logo)
+![](https://ogimage.micahrl.com/api/ogImage/og/production/preview/logo)
 
 This is an og:image generator.
 
