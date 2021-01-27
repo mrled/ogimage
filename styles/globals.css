@@ -14,3 +14,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.w-ogimage-logo {
+  width: 32rem;
+}

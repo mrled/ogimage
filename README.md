@@ -1,5 +1,7 @@
 # O.G. IMAGE
 
+![](https://ogimage.micahrl.com/api/ogImage/og/preview/logo)
+
 This is an og:image generator.
 
 It is patterned after <https://github.com/vercel/og-image>, but borrowed no code from it.

@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "Chomsky";
+  src: local("Chomsky"), url("/Chomsky.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+.font-chomsky {
+  font-family: Chomsky, serif;
+}

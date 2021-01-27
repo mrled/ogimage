@@ -28,6 +28,13 @@ const KnownSites: KnownSitesType = {
       cacheControl: defaultCacheControl,
     },
   },
+  og: {
+    local: {
+      baseUri: "http://localhost:2929",
+      scaleFactor: 2,
+      cacheControl: defaultCacheControl,
+    },
+  },
   biblemunger: {
     production: {
       baseUri: "https://biblemunger.micahrl.com",
