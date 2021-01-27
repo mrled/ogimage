@@ -9,10 +9,12 @@ export function InlineCode({ children }: CodePropsType) {
 
 export function CodeBlock({ children }: CodePropsType) {
   return (
-    <pre
-      className={`border-2 border-yellow-600 p-2 font-mono ${codeFontColor} whitespace-pre overflow-scroll`}
-    >
-      <code className="">{children}</code>
-    </pre>
+    <div className="overflow-scroll">
+      <div className="border-2 border-yellow-600 w-max">
+        <pre className={`p-2 font-mono ${codeFontColor} whitespace-pre`}>
+          <code className="">{children}</code>
+        </pre>
+      </div>
+    </div>
   );
 }
