@@ -95,7 +95,10 @@ export default function Home() {
                 urlSubPath="path/to/your/preview/endpoint"
               />
             </li>
+          </ol>
 
+          <h2 className="text-2xl my-8">Examples</h2>
+          <ul>
             <li className={liClasses}>
               For example, as mentioned above, <OgImage /> itself has a page for
               its own preview at{" "}
@@ -149,7 +152,7 @@ export default function Home() {
                 urlSubPath="preview/munge/wine/whiteclaws/49-5-18"
               />{" "}
             </li>
-          </ol>
+          </ul>
 
           <h2 className="text-2xl my-8">Beware</h2>
           <p className="my-4">
