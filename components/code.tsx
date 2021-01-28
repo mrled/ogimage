@@ -9,7 +9,7 @@ export function InlineCode({ children }: CodePropsType) {
 
 export function CodeBlock({ children }: CodePropsType) {
   return (
-    <div className="overflow-scroll">
+    <div className="overflow-scroll md:overflow-visible">
       <div className="border-2 border-yellow-600 w-max">
         <pre className={`p-2 font-mono ${codeFontColor} whitespace-pre`}>
           <code className="">{children}</code>

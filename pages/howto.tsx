@@ -6,17 +6,18 @@ import { CodeBlock, InlineCode } from "components/code";
 import { OgImageUrlTable } from "components/ogImageUrlTable";
 
 const exampleKnownHostsObj = `
+const oneWeekInSecs = 60 * 60 * 24 * 7;
 const KnownSites: KnownSitesType = {
   exampleSite: {
     production: {
       baseUri: "https://www.example.com",
-      scaleFactor: 3,
-      cacheControl: defaultCacheControl,
+      scaleFactor: 1,
+      cacheControl: "s-maxage=\${oneWeekInSecs}, immutable, public",
     },
     staging: {
       baseUri: "https://staging.example.com",
-      scaleFactor: 3,
-      cacheControl: defaultCacheControl,
+      scaleFactor: 1,
+      cacheControl: "s-maxage=\${oneWeekInSecs}, immutable, public",
     },
   },
 }
