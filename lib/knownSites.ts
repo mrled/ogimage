@@ -11,14 +11,20 @@ type KnownSitesType = {
   };
 };
 
-// All values in seconds
+/* All values in seconds
+ * IIRC redeploying the ogimage site will reset all caches...
+ * if something is returning the wrong result, redeploy this site.
+ * However, it takes several seconds to generate the image,
+ * so the first time you post a link, it might not have a preview
+ * unless it is already cached :/
+ */
 const cacheDuration = {
   oneYear: 31536000, // Max allowed for s-maxage on Vercel
   oneWeek: 60 * 60 * 24 * 7,
   thirtyDays: 60 * 60 * 24 * 30,
 };
 
-const defaultCacheControl = `s-maxage=${cacheDuration.oneWeek}, immutable, public`;
+const defaultCacheControl = `s-maxage=${cacheDuration.oneYear}, immutable, public`;
 
 const KnownSites: KnownSitesType = {
   cistercian: {
