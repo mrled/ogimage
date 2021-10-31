@@ -24,7 +24,12 @@ const KnownSites: KnownSitesType = {
   cistercian: {
     production: {
       baseUri: "https://cistercian.micahrl.com",
-      scaleFactor: 3,
+      scaleFactor: 2,
+      cacheControl: defaultCacheControl,
+    },
+    local: {
+      baseUri: "http://localhost:3000",
+      scaleFactor: 2.5,
       cacheControl: defaultCacheControl,
     },
   },

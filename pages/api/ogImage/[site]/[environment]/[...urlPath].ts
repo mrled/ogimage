@@ -37,7 +37,7 @@ export default async function handler(
   // Good defaults for og:image ?
   // Can make this adjustable later by adding them to the route
   const width = 1200;
-  const height = 675;
+  const height = 630;
 
   console.log(
     `Will take ${width}x${height}@${site.scaleFactor} screenshot of ${uri}`
